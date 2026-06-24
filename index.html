@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>河南人nb666</title>
+    <title>你闯入了一头雄狮的领地</title>
     <style>
         * {
             margin: 0;
@@ -23,6 +23,13 @@
             text-align: center;
             font-size: 24px;
             font-weight: 600;
+        }
+
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
         }
 
         .hero {
@@ -99,6 +106,55 @@
             font-weight: 600;
         }
 
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 12px 24px;
+            background: #007aff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .album-title {
+            text-align: center;
+            font-size: 28px;
+            margin: 20px 0;
+            font-weight: 800;
+        }
+
+        .photo-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-card {
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            background: #fff;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .photo-card p {
+            text-align: center;
+            padding: 10px;
+            color: #444;
+        }
+
         .footer {
             background: #f2f2f7;
             color: #86868b;
@@ -106,79 +162,70 @@
             padding: 30px;
             margin-top: 40px;
         }
-
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-        }
-
-        .modal-box {
-            background: white;
-            width: 270px;
-            border-radius: 14px;
-            padding: 25px 20px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .modal-box p {
-            font-size: 17px;
-            color: #1d1d1f;
-            margin-bottom: 0;
-        }
     </style>
 </head>
 
 <body>
-    <div class="header">河南人nb666</div>
+    <div class="header">你闯入了一头雄狮的领地</div>
 
-    <div class="hero">
-        <h1>欢迎</h1>
-        <p>you are so free</p>
-        <button id="btn">点击体验</button>
-    </div>
-
-    <div class="content">
-        <div class="box">
-            <h3>首页</h3>
-            <p>作者：赵</p>
+    <!-- 首页区域 -->
+    <div class="page active" id="home">
+        <div class="hero">
+            <h1>欢迎</h1>
+            <p>you are so free</p>
+            <button onclick="goPhoto()">相册查看</button>
         </div>
-        <div class="box">
-            <h3>关于</h3>
-            <p>我是少🐟爸爸</p>
-        </div>
-        <div class="box">
-            <h3>联系</h3>
-            <p>保持神秘</p>
-        </div>
-    </div>
 
-    <div class="footer">© 2025 zhao 版权所有</div>
-
-    <div class="modal" id="modal">
-        <div class="modal-box">
-            <p>想得美</p>
+        <div class="content">
+            <div class="box">
+                <h3>首页</h3>
+                <p>作者：赵</p>
+            </div>
+            <div class="box">
+                <h3>关于</h3>
+                <p>我是少🐟爸爸</p>
+            </div>
+            <div class="box">
+                <h3>联系</h3>
+                <p>保持神秘</p>
+            </div>
         </div>
     </div>
+
+    <!-- 相册区域 -->
+    <div class="page" id="photo">
+        <h2 class="album-title">享福tv</h2>
+        <button class="back-btn" onclick="goHome()">← 返回首页</button>
+
+        <div class="photo-wrap">
+            <div class="photo-card">
+                <img src="img/pic1.jpg" alt="照片">
+                <p>照片1</p>
+            </div>
+            <div class="photo-card">
+                <img src="img/pic2.jpg" alt="照片">
+                <p>照片2</p>
+            </div>
+            <div class="photo-card">
+                <img src="img/pic3.jpg" alt="照片">
+                <p>照片3</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">© 2026 zhao 版权所有</div>
 
     <script>
-        const btn = document.getElementById('btn');
-        const modal = document.getElementById('modal');
-
-        btn.addEventListener('click', () => {
-            modal.style.display = 'flex';
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 2000);
-        });
+        function goPhoto() {
+            document.getElementById('home').classList.remove('active');
+            document.getElementById('photo').classList.add('active');
+            window.scrollTo(0,0);
+        }
+        function goHome() {
+            document.getElementById('photo').classList.remove('active');
+            document.getElementById('home').classList.add('active');
+            window.scrollTo(0,0);
+        }
     </script>
 </body>
 </html>
